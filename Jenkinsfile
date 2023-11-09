@@ -28,7 +28,7 @@ pipeline {
          container('kubectl') {
           withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
             sh 'kubectl describe svc -n crud web-server'
-            sh 'kubectl describe po -n crud web-server-7857dcd7b7-hkzpw'
+            sh 'kubectl describe po -n crud -l io.kompose.service=web-server'
 
           }
         }
